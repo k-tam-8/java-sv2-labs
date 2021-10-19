@@ -17,12 +17,15 @@ public class Investment {
     public int getFund() {
         return fund;
     }
+
     public double getYield(int days) {
-        return 1;
+        return fund * interestRate * days / (100.0 * 365);
     }
+
     public double close(int days) {
-        active=false;
-        return 1;
+        double totalAmount = (getFund() + getYield(days)) * (1 - cost / 100);
+        double payout = active ? totalAmount : 0;
+        active = false;
+        return payout;
     }
-    /// NINCS KÉSZ, érthetetlen a fealadat
 }
