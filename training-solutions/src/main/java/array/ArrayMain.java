@@ -19,9 +19,12 @@ public class ArrayMain {
             if (i!=16)
             System.out.print(", ");
         }
+        System.out.println();
         boolean[] arrB = {false, true, false,true,false,true};
         for (int i = 0; i<arrB.length; i++) {
-            arrB[i]=true;
+            arrB[i] = !arrB[i];
         }
+        for (int i=0;i<6; i++)
+        System.out.print(arrB[i] + " ");
     }
 }
