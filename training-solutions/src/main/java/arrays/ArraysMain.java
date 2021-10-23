@@ -32,7 +32,8 @@ public class ArraysMain {
         int[] tmpArr1 = nums1;
         int[] tmpArr2 = nums2;
         Arrays.sort(tmpArr1);Arrays.sort(tmpArr2);
-        if (Arrays.equals(tmpArr2,tmpArr1)) return true; else return false;
+        //if (Arrays.equals(tmpArr2,tmpArr1)) return true; else return false;
+        return Arrays.equals(tmpArr2,tmpArr1);
     }
 
     public static void main(String[] args) {
@@ -51,8 +52,6 @@ public class ArraysMain {
 
         int[] lotNums = {54,23,12,43,4};
         int[] lotNums2= {12,4,43,23,54};
-        System.out.println(Arrays.toString(lotNums));
-        System.out.println(Arrays.toString(lotNums2));
         System.out.println(arraysMain.wonLottery(lotNums,lotNums2));
     }
 }
