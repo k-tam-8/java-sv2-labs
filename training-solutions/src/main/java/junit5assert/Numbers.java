@@ -1,0 +1,12 @@
+package junit5assert;
+
+public class Numbers {
+    public int[] getEvenNumber(int[] numbers) {
+        for (int i = 0; i < numbers.length; i++) {
+            if (numbers[i] % 2 == 1) {
+                numbers[i] = 0;
+            }
+        }
+        return numbers;
+    }
+}
