@@ -34,4 +34,8 @@ public class MeetingRoom {
     public void setWidth(int width) {
         this.width = width;
     }
+
+    public int getArea() {
+        return length * width;
+    }
 }

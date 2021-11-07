@@ -13,7 +13,7 @@ public class MeetingRoomController {
         int roomWidth = sc.nextInt();
         System.out.print("Kérem a tárgyaló hosszát méterben: ");
         int roomLength = sc.nextInt();
-        Office office = new Office();
+        // Office office = new Office();
         MeetingRoom meetingRoom = new MeetingRoom(roomName, roomLength, roomWidth);
         office.addMeetingRoom(meetingRoom);
     }
