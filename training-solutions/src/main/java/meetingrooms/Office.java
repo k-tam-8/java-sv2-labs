@@ -4,28 +4,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Office {
-    List<MeetingRoom> meetingRooms = new ArrayList<>();
+    private List<MeetingRoom> meetingRooms = new ArrayList<>();
 
     public void addMeetingRoom(MeetingRoom meetingRoom) {
         meetingRooms.add(meetingRoom);
     }
 
     public void printNames() {
-        for (int i = 0; i < meetingRooms.size(); i++) {
-            System.out.println(meetingRooms.get(i).getName());
+        for (MeetingRoom meetingRoom : meetingRooms) {
+            System.out.println(meetingRoom.getName());
         }
+        System.out.println();
     }
 
     public void printNamesReverse() {
-        for (int i = meetingRooms.size()-1; i >= 0; i--) {
+        for (int i = meetingRooms.size() - 1; i >= 0; i--) {
             System.out.println(meetingRooms.get(i).getName());
         }
+        System.out.println();
     }
 
     public void printEvenNames() {
         for (int i = 1; i < meetingRooms.size(); i += 2) {
             System.out.println(meetingRooms.get(i).getName());
         }
+        System.out.println();
     }
 
     public void printAreas() {
@@ -35,16 +38,16 @@ public class Office {
     }
 
     public void printMeetingRoomsWithNames(String name) {
-        for (MeetingRoom meetingRoom : meetingRooms) {
-            if (meetingRoom.getName().equals(name)) {
-                System.out.println(meetingRoom.getName());
+        for (int i = 0; i < meetingRooms.size(); i++) {
+            if (meetingRooms.get(i).getName().equals(name)) {
+                printAllData(i);
             }
         }
     }
 
     public void printMeetingRoomsContains(String part) {
         for (int i = 0; i < meetingRooms.size(); i++) {
-            if (meetingRooms.get(i).getName().contains(part)) {
+            if (meetingRooms.get(i).getName().toLowerCase().contains(part.toLowerCase())) {
                 printAllData(i);
             }
         }

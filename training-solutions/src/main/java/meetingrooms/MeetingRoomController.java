@@ -3,7 +3,8 @@ package meetingrooms;
 import java.util.Scanner;
 
 public class MeetingRoomController {
-    private Office office;
+    private Office office = new Office();
+    private boolean quitCheck = false;
 
     public void readOffice() {
         Scanner sc = new Scanner(System.in);
@@ -11,9 +12,10 @@ public class MeetingRoomController {
         String roomName = sc.nextLine();
         System.out.print("Kérem a tárgyaló szélességét méterben: ");
         int roomWidth = sc.nextInt();
+        //sc.nextLine();
         System.out.print("Kérem a tárgyaló hosszát méterben: ");
         int roomLength = sc.nextInt();
-        Office office = new Office();
+        //sc.nextLine();
         MeetingRoom meetingRoom = new MeetingRoom(roomName, roomLength, roomWidth);
         office.addMeetingRoom(meetingRoom);
     }
@@ -31,11 +33,11 @@ public class MeetingRoomController {
         System.out.print("-> Válassz menüpontot: ");
     }
 
-    public int runMenu() {
+    public void runMenu() {
         printMenu();
         Scanner sc = new Scanner(System.in);
-        Office office = new Office();
         int menuChoose = sc.nextInt();
+        sc.nextLine();
         switch (menuChoose) {
             case 1:
                 readOffice();
@@ -65,16 +67,18 @@ public class MeetingRoomController {
             case 8:
                 System.out.print("Tárgyalók amiknek a területük nagyobb mint: ");
                 int area = sc.nextInt();
+                //sc.nextLine();
                 office.printAreasLargerThan(area);
                 break;
+            case 9: quitCheck=true;
         }
-        return menuChoose;
     }
 
     public static void main(String[] args) {
         MeetingRoomController meetingRoomController = new MeetingRoomController();
-        while (meetingRoomController.runMenu() != 9) {
+        do {
             meetingRoomController.runMenu();
         }
+        while (!meetingRoomController.quitCheck);
     }
 }
