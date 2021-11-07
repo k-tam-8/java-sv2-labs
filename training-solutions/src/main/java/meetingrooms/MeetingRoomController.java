@@ -13,7 +13,7 @@ public class MeetingRoomController {
         int roomWidth = sc.nextInt();
         System.out.print("Kérem a tárgyaló hosszát méterben: ");
         int roomLength = sc.nextInt();
-        // Office office = new Office();
+        Office office = new Office();
         MeetingRoom meetingRoom = new MeetingRoom(roomName, roomLength, roomWidth);
         office.addMeetingRoom(meetingRoom);
     }
@@ -31,7 +31,7 @@ public class MeetingRoomController {
         System.out.print("-> Válassz menüpontot: ");
     }
 
-    public void runMenu() {
+    public int runMenu() {
         printMenu();
         Scanner sc = new Scanner(System.in);
         int menuChoose = sc.nextInt();
@@ -47,14 +47,14 @@ public class MeetingRoomController {
             case 7:
             case 8:
             case 9:
-            default:
-                System.out.println("Nem megfelelő szám!");
         }
+        return menuChoose;
     }
 
     public static void main(String[] args) {
         MeetingRoomController meetingRoomController = new MeetingRoomController();
-        meetingRoomController.runMenu();
-
+        while (meetingRoomController.runMenu()!=9) {
+            meetingRoomController.runMenu();
+        }
     }
 }
