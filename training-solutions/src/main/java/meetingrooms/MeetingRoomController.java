@@ -39,21 +39,20 @@ public class MeetingRoomController {
             case 1:
                 readOffice();
                 break;
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-            case 6:
-            case 7:
-            case 8:
-            case 9:
+            case 2: office.printNames();break;
+            case 3: office.printNamesReverse();break;
+            case 4: office.printEvenNames();break;
+            case 5: office.printAreas();break;
+            case 6: office.printMeetingRoomsWithNames("name");break;
+            case 7: office.printMeetingRoomsContains("name");break;
+            case 8: office.printAreasLargerThan(1);break;
         }
         return menuChoose;
     }
 
     public static void main(String[] args) {
         MeetingRoomController meetingRoomController = new MeetingRoomController();
-        while (meetingRoomController.runMenu()!=9) {
+        while (meetingRoomController.runMenu() != 9) {
             meetingRoomController.runMenu();
         }
     }

@@ -30,31 +30,40 @@ public class Office {
 
     public void printAreas() {
         for (int i = 0; i < meetingRooms.size(); i++) {
-            System.out.println("Tárgyaló neve: " + meetingRooms.get(i).getName());
-            System.out.println("Tárgyaló szélessége: " + meetingRooms.get(i).getWidth());
-            System.out.println("Tárgyaló hossza: " + meetingRooms.get(i).getLength());
-            System.out.println("Tárgyaló területe: " + meetingRooms.get(i).getArea());
-            System.out.println();
+            printAllData(i);
         }
     }
 
     public void printMeetingRoomsWithNames(String name) {
-
+        for (MeetingRoom meetingRoom : meetingRooms) {
+            if (meetingRoom.getName().equals(name)) {
+                System.out.println(meetingRoom.getName());
+            }
+        }
     }
 
     public void printMeetingRoomsContains(String part) {
-
+        for (int i = 0; i < meetingRooms.size(); i++) {
+            if (meetingRooms.get(i).getName().contains(part)) {
+                printAllData(i);
+            }
+        }
     }
 
     public void printAreasLargerThan(int area) {
         for (int i = 0; i < meetingRooms.size(); i++) {
-           if (meetingRooms.get(i).getArea()>area){
-               System.out.println("Tárgyaló neve: " + meetingRooms.get(i).getName());
-               System.out.println("Tárgyaló szélessége: " + meetingRooms.get(i).getWidth());
-               System.out.println("Tárgyaló hossza: " + meetingRooms.get(i).getLength());
-               System.out.println("Tárgyaló területe: " + meetingRooms.get(i).getArea());
-               System.out.println();
-           }
+            if (meetingRooms.get(i).getArea() > area) {
+                printAllData(i);
+            }
         }
     }
+
+    public void printAllData(int listItem) {
+        System.out.println("Tárgyaló neve: " + meetingRooms.get(listItem).getName());
+        System.out.println("Tárgyaló szélessége: " + meetingRooms.get(listItem).getWidth());
+        System.out.println("Tárgyaló hossza: " + meetingRooms.get(listItem).getLength());
+        System.out.println("Tárgyaló területe: " + meetingRooms.get(listItem).getArea());
+        System.out.println();
+    }
 }
+
