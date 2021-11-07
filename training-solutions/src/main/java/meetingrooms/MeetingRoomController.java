@@ -34,18 +34,39 @@ public class MeetingRoomController {
     public int runMenu() {
         printMenu();
         Scanner sc = new Scanner(System.in);
+        Office office = new Office();
         int menuChoose = sc.nextInt();
         switch (menuChoose) {
             case 1:
                 readOffice();
                 break;
-            case 2: office.printNames();break;
-            case 3: office.printNamesReverse();break;
-            case 4: office.printEvenNames();break;
-            case 5: office.printAreas();break;
-            case 6: office.printMeetingRoomsWithNames("name");break;
-            case 7: office.printMeetingRoomsContains("name");break;
-            case 8: office.printAreasLargerThan(1);break;
+            case 2:
+                office.printNames();
+                break;
+            case 3:
+                office.printNamesReverse();
+                break;
+            case 4:
+                office.printEvenNames();
+                break;
+            case 5:
+                office.printAreas();
+                break;
+            case 6:
+                System.out.print("Keresendő név: ");
+                String name = sc.nextLine();
+                office.printMeetingRoomsWithNames(name);
+                break;
+            case 7:
+                System.out.print("Keresendő névtöredék: ");
+                String nameCont = sc.nextLine();
+                office.printMeetingRoomsContains(nameCont);
+                break;
+            case 8:
+                System.out.print("Tárgyalók amiknek a területük nagyobb mint: ");
+                int area = sc.nextInt();
+                office.printAreasLargerThan(area);
+                break;
         }
         return menuChoose;
     }
