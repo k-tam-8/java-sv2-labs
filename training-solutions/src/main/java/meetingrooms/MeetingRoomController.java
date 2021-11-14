@@ -18,16 +18,11 @@ public class MeetingRoomController {
     }
 
     public void printMenu() {
-        System.out.println("1. Tárgyaló rögzítése");
-        System.out.println("2. Tárgyalók sorrendben");
-        System.out.println("3. Tárgyalók visszafele sorrendben");
-        System.out.println("4. Minden második tárgyaló");
-        System.out.println("5. Területek");
-        System.out.println("6. Keresés pontos név alapján");
-        System.out.println("7. Keresés névtöredék alapján");
-        System.out.println("8. Keresés terület alapján");
-        System.out.println("9. Kilépés");
-        System.out.print("-> Válassz menüpontot: ");
+        System.out.print("1. Tárgyaló rögzítése\n2. Tárgyalók sorrendben\n" +
+                "3. Tárgyalók visszafele sorrendben\n4. Minden második tárgyaló\n" +
+                "5. Területek\n6. Keresés pontos név alapján\n" +
+                "7. Keresés névtöredék alapján\n8. Keresés terület alapján\n" +
+                "9. Kilépés\n-> Válassz menüpontot: ");
     }
 
     public void runMenu() {
