@@ -16,5 +16,5 @@ public class BusTimeTable {
     public List<SimpleTime> getTimeList() {
         return timeList;
     }
-    
+
 }
