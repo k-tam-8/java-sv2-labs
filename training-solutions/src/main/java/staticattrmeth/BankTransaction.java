@@ -21,7 +21,7 @@ public class BankTransaction {
             currentMaxValue = transactionValue;
         }
     }
-    
+
 
     public static long getAverageOfTransaction() {
         return sumOfTransactions != 0 ? sumOfTransactions / countOfTransactions : 0;
