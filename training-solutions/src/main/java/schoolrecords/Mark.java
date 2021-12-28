@@ -6,15 +6,28 @@ public class Mark {
     private Subject subject;
 
     public Mark(MarkType markType, Subject subject, Tutor tutor) {
+        isParameterNull(markType,subject,tutor);
         this.tutor = tutor;
         this.markType = markType;
         this.subject = subject;
     }
 
     public Mark(String markType, Subject subject, Tutor tutor) {
+        anotherIsParameterNull(markType,subject,tutor);
         this.tutor = tutor;
         this.markType = MarkType.valueOf(markType);
         this.subject = subject;
+    }
+
+    private void isParameterNull(MarkType markType, Subject subject, Tutor tutor) {
+        if (markType == null || subject == null || tutor == null) {
+            throw new NullPointerException("Both subject and tutor must be provided!");
+        }
+    }
+    private void anotherIsParameterNull(String markType, Subject subject, Tutor tutor) {
+        if (markType.isEmpty() || subject == null || tutor == null) {
+            throw new NullPointerException("Both subject and tutor must be provided!");
+        }
     }
 
     public MarkType getMarkType() {
@@ -31,6 +44,6 @@ public class Mark {
 
     @Override
     public String toString() {
-        return subject + ": " + markType.getMarkName() + "("  + markType.getMark() + ")";
+        return  markType.getMarkName() + "(" + markType.getMark() + ")";
     }
 }
