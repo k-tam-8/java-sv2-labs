@@ -1,10 +1,10 @@
 package isahasa.fleet;
 
 public class CargoShip implements CanCarryGoods, Ship {
-    final CanCarryGoods canCarryGoods;
+    private final CanCarryGoods canCarryGoods;
 
     public CargoShip(int cargoWeight) {
-
+        this.canCarryGoods=new CanCarryGoodsBehaviour(cargoWeight);
     }
 
     @Override
