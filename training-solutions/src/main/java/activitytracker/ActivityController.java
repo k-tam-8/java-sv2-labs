@@ -11,7 +11,7 @@ public class ActivityController {
              PreparedStatement stat = connection.prepareStatement("insert into activities(start_time, description, activity_type) values(?,?,?)")) {
             stat.setTimestamp(1, Timestamp.valueOf(activity.getStartTime()));
             stat.setString(2, activity.getDescription());
-           // stat.setString(3, activity.getActivityType().getStatus());
+            stat.setString(3, activity.getActivityType().toString());
             stat.executeUpdate();
 
         } catch (SQLException sql) {

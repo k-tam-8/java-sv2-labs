@@ -28,6 +28,7 @@ public class ActivityTrackerMain {
                 "Keskeny utca", ActivityType.RUNNING);
 
         ActivityController ac = new ActivityController();
-        //ac.addActivityToDb(actHiking,dSource);
+        ac.addActivityToDb(actHiking,dSource);
+        ac.addActivityToDb(actRunning,dSource);
     }
 }
