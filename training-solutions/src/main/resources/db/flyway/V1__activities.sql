@@ -1,0 +1,1 @@
+CREATE TABLE activities (id BIGINT AUTO_INCREMENT, start_time timestamp, description VARCHAR(255), activity_type ENUM('BIKING', 'HIKING', 'RUNNING', 'BASKETBALL'), CONSTRAINT pk_activities PRIMARY KEY (id));
