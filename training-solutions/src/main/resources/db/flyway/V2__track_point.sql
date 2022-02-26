@@ -1,0 +1,1 @@
+CREATE TABLE track_point (id BIGINT AUTO_INCREMENT, time date, lat TINYINT, lon TINYINT, activity_id BIGINT, CONSTRAINT pk_track_point PRIMARY KEY (id));
