@@ -1,29 +1,5 @@
-class: inverse, center, middle
-
-
 # Perzisztencia, adatbázis programozás JPA technológiával
 
----
-
-class: inverse, center, middle
-
-# Tematika
-
----
-
-## Tematika
-
-* JPA
-
----
-
-## Források
-
-* [Mike Keith, Merrick Schincariol: Pro JPA 2 in Java EE 8: An In-Depth Guide to Java Persistence APIs](https://www.amazon.com/Pro-JPA-Java-Depth-Persistence/dp/1484234197/ref=sr_1_2?ie=UTF8&qid=1521455706) (3. kiadás)
-
----
-
-class: inverse, center, middle
 
 #  Egyszerű mentés JPA-val
 
@@ -64,7 +40,6 @@ class: inverse, center, middle
 
 * Maven esetén: `src/main/resources/META-INF/persistence.xml`
 
-.small-code-14[
 ```xml
 <persistence version="2.0"
              xmlns="http://java.sun.com/xml/ns/persistence"
@@ -187,8 +162,6 @@ insert into employees (emp_name) values (?)
 
 ---
 
-class: inverse, center, middle
-
 #  További egyszerű műveletek JPA-val
 
 ---
@@ -220,11 +193,6 @@ employee.setName("Jack Doe");
 Employee employee = entityManager.find(Employee.class, 1);
 entityManager.remove(employee);
 ```
-
----
-
-class: inverse, center, middle
-
 
 
 ## Architektúra és integrációs tesztelés
@@ -287,9 +255,6 @@ public class EmployeeDaoTest {
 ```
 
 ---
-
-class: inverse, center, middle
-
 
 
 ##  Entitások konfigurálása
@@ -397,9 +362,6 @@ class: inverse, center, middle
 * `@Transient` annotáció
 
 ---
-
-class: inverse, center, middle
-
 
 
 # Elsődleges kulcs
@@ -520,10 +482,6 @@ create table employees (id bigint auto_increment,
 
 ---
 
-class: inverse, center, middle
-
-
-
 # Entitások életciklusa
 
 ---
@@ -561,10 +519,6 @@ class: inverse, center, middle
 * `entityManager.flush()`
 
 ---
-
-class: inverse, center, middle
-
-
 
 # Többértékű attribútumok
 
@@ -663,9 +617,6 @@ private Map<String, String> phoneNumbers;
 * Megoldás: `join fetch`
 
 ---
-
-class: inverse, center, middle
-
 
 
 # Kapcsolatok
@@ -838,10 +789,6 @@ return em.find(Employee.class, id, hints);
 
 ---
 
-class: inverse, center, middle
-
-
-
 # Több-több kapcsolatok
 
 ---
@@ -895,10 +842,6 @@ private Collection<Project> projects;
 
 ---
 
-class: inverse, center, middle
-
-
-
 # Entitások mapekben
 
 ---
@@ -951,10 +894,6 @@ public class Project {
 
 
 ---
-
-class: inverse, center, middle
-
-
 
 # Beágyazott objektumok és másodlagos tábla
 
@@ -1019,9 +958,6 @@ public class Employee {
 
 ---
 
-class: inverse, center, middle
-
-
 
 # Öröklődés
 
@@ -1052,9 +988,6 @@ class: inverse, center, middle
 
 
 ---
-
-class: inverse, center, middle
-
 
 
 # Lekérdezések
@@ -1249,10 +1182,6 @@ Timeout esetén `QueryTimeoutException`
 
 ---
 
-class: inverse, center, middle
-
-
-
 # Haladó lekérdezések
 
 ---
@@ -1329,8 +1258,6 @@ WHERE p.employees IS NOT EMPTY
 
 ---
 
-class: inverse, center, middle
-
 # Bulk műveletek
 
 ---
@@ -1361,9 +1288,6 @@ public void removeEmptyProjects() {
 ```
 
 ---
-
-class: inverse, center, middle
-
 
 
 # JPA Spring Boottal
@@ -1432,7 +1356,7 @@ public class EmployeeDaoTest {
 }
 ```
 ---
-class: inverse, center, middle
+
 
 ## Spring Data JPA
 
@@ -1621,10 +1545,6 @@ public interface EmployeeRepository
 
 ---
 
-class: inverse, center, middle
-
-
-
 # JPA Java EE-vel
 
 ---
@@ -1674,10 +1594,6 @@ public class EmployeeDao {
 ```
 
 ---
-
-class: inverse, center, middle
-
-
 
 # Deklaratív tranzakciókezelés
 
