@@ -15,47 +15,54 @@ public class ActivityDAO {
     }
 
     public Activity saveActivity(Activity activity) {
-        try (Connection connection = mariaDbDataSource.getConnection();
-             PreparedStatement stat = connection.prepareStatement("insert into activities(start_time, description, activity_type) values(?,?,?)",
-                     Statement.RETURN_GENERATED_KEYS)) {
-            stat.setTimestamp(1, Timestamp.valueOf(activity.getStartTime()));
-            stat.setString(2, activity.getDescription());
-            stat.setString(3, activity.getActivityType().toString());
-            stat.executeUpdate();
-
-            try (ResultSet rs = stat.getGeneratedKeys()) {
-                if (rs.next()) {
-                    activity.setId((int) rs.getLong(1));
-                    saveTrackPointsToDB(activity);
-                    return activity;
+        try (Connection connection = mariaDbDataSource.getConnection()) {
+            connection.setAutoCommit(false);
+            try (PreparedStatement stat = connection.prepareStatement("insert into activities(start_time, description, activity_type) values(?,?,?)",
+                    Statement.RETURN_GENERATED_KEYS)) {
+                //FELTÉTEL
+                stat.setTimestamp(1, Timestamp.valueOf(activity.getStartTime()));
+                stat.setString(2, activity.getDescription());
+                stat.setString(3, activity.getActivityType().toString());
+                try (ResultSet rs = stat.getGeneratedKeys()) {
+                    if (rs.next()) {
+                        activity.setId((int) rs.getLong(1));
+                        saveTrackPointsToDB(activity);
+                    } else throw new IllegalStateException("Insert failed");
                 }
-                throw new IllegalStateException("Insert failed");
+                stat.executeUpdate();
+                connection.commit();
+            } catch (IllegalArgumentException iae) {
+                connection.rollback();
             }
+
 
         } catch (SQLException sql) {
             throw new IllegalStateException("Cannot update ", sql);
         }
+
+        return activity;
     }
 
     public void saveTrackPointsToDB(Activity activity) {
         try (Connection connection = mariaDbDataSource.getConnection();
              PreparedStatement stat = connection.prepareStatement("insert into track_point(time, lat, lon, activity_id) values(?,?,?,?)", Statement.RETURN_GENERATED_KEYS)) {
-            for (TrackPoint tp : activity.getTrackPoints()) {
-                stat.setDate(1, Date.valueOf(tp.getTime()));
-                stat.setLong(2, tp.getLat());
-                stat.setLong(3, tp.getLon());
+            for (int i = 0; i < activity.getTrackPoints().size(); i++) {
+                stat.setDate(1, Date.valueOf(activity.getTrackPoints().get(i).getTime()));
+                stat.setLong(2, activity.getTrackPoints().get(i).getLat());
+                stat.setLong(3, activity.getTrackPoints().get(i).getLon());
                 stat.setLong(4, activity.getId());
+                ResultSet rs = stat.getGeneratedKeys();
                 stat.executeUpdate();
             }
 
-            try (ResultSet rs = stat.getGeneratedKeys()) {
+           /* try (ResultSet rs = stat.getGeneratedKeys()) {
                 if (rs.next()) {
                     for (TrackPoint tp : activity.getTrackPoints()) {
                         tp.setId((int) rs.getLong("id"));
                     }
                 }
                 //throw new IllegalStateException("Insert failed");
-            }
+            }*/
 
         } catch (SQLException sql) {
             throw new IllegalStateException("Cannot update ", sql);
